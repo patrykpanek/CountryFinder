@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import CircularProgress from '@mui/material/CircularProgress';
 import '../App.css';
+import { convertToShorter } from '../utilitis/converter';
 
 interface Currency {
   symbol: string;
@@ -74,6 +75,16 @@ export const CountriesList = ({
     setIsMobileView(false);
   };
 
+  const sortedFilteredCountry = filteredCountries.sort((a, b) => {
+    if (a.name.common < b.name.common) {
+      return -1;
+    }
+    if (a.name.common > b.name.common) {
+      return 1;
+    }
+    return 0;
+  });
+
   return (
     <Wrapper isMobileView={isMobileView}>
       {loading ? (
@@ -94,11 +105,11 @@ export const CountriesList = ({
           <div className="headers">
             <span>Country</span>
             <span>Capital</span>
-            <span>Currency</span>
             <span>Flag</span>
+            <span>Currency</span>
             <span>Population</span>
           </div>
-          {filteredCountries.map((country, index) => (
+          {sortedFilteredCountry.map((country, index) => (
             <>
               <div
                 className="table-element"
@@ -111,14 +122,14 @@ export const CountriesList = ({
                     ? country.capital[0]
                     : '-'}
                 </div>
+                <div>
+                  <img src={country.flags.png} alt={`${country.name} flag`} />
+                </div>
                 <div className="currencie">
                   {country.currencies &&
                     Object.entries(country.currencies)[0][1].symbol}
                 </div>
-                <div>
-                  <img src={country.flags.png} alt={`${country.name} flag`} />
-                </div>
-                <div>{country.population}</div>
+                <div>{convertToShorter(country.population)}</div>
               </div>
               <span className="divider"></span>
             </>
@@ -163,6 +174,10 @@ const Wrapper = styled.div<{ isMobileView: boolean }>`
       justify-content: space-between;
       color: #5f5b7a;
       padding: 10px 0;
+
+      span {
+        width: 25%;
+      }
     }
     .divider {
       width: 100%;
@@ -208,7 +223,7 @@ const Wrapper = styled.div<{ isMobileView: boolean }>`
     justify-content: space-between;
 
     div {
-      width: 60px;
+      width: 25%;
       display: flex;
       justify-content: left;
     }

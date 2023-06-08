@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Map } from './Map';
+import { MapWrapper } from './MapWrapper';
 import { CountriesList } from './CountriesList';
 import { useState } from 'react';
 
@@ -14,7 +14,7 @@ export const GlobeFinder = () => {
         setLatLng={setLatLng}
         setIsMobileView={setIsMobileView}
       />
-      <Map
+      <MapWrapper
         setIsMobileView={setIsMobileView}
         isMobileView={isMobileView}
         latlng={latlng}

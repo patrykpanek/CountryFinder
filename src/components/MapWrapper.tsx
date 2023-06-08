@@ -4,7 +4,7 @@ import '../App.css';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 
-export const Map = ({
+export const MapWrapper = ({
   setIsMobileView,
   isMobileView,
   latlng,
