@@ -1,4 +1,4 @@
-import { GoogleMap, Marker, useLoadScript } from '@react-google-maps/api';
+import { GoogleMap, MarkerF, useLoadScript } from '@react-google-maps/api';
 import { useMemo } from 'react';
 import '../App.css';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -29,7 +29,7 @@ export const Map = ({
         center={center}
         zoom={10}
       >
-        <Marker position={center} />
+        <MarkerF position={center} />
       </GoogleMap>
       {isMobileView ? (
         <CloseIcon
