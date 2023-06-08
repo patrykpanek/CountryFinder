@@ -210,7 +210,7 @@ const Wrapper = styled.div<{ isMobileView: boolean }>`
     div {
       width: 60px;
       display: flex;
-      justify-content: center;
+      justify-content: left;
     }
 
     &:hover {
