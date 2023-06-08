@@ -17,7 +17,7 @@ export const Map = ({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY as string,
   });
   const center = useMemo(
-    () => ({ lat: latlng[0] || 30, lng: latlng[1] || 30 }),
+    () => ({ lat: latlng[0] || 31.95, lng: latlng[1] || 35.93 }),
     [latlng]
   );
 

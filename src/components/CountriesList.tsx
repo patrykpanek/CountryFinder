@@ -17,7 +17,9 @@ interface Country {
   flags: {
     png: string;
   };
-  latlng: number[];
+  capitalInfo: {
+    latlng: number[];
+  };
 }
 
 export const CountriesList = ({
@@ -101,7 +103,7 @@ export const CountriesList = ({
               <div
                 className="table-element"
                 key={index}
-                onClick={() => handleSetLatLng(country?.latlng)}
+                onClick={() => handleSetLatLng(country?.capitalInfo?.latlng)}
               >
                 <div>{country.name.common}</div>
                 <div className="capital">
